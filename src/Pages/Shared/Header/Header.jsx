@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../../../../public/apex sports logo.png'
-import icon from '../../../../public/apex sports icon.png'
+import icon from '../../../../public/apex sports icon without bg.png'
+import logo from '../../../../public/apex sports logo without bg.png'
 import { Link } from 'react-router-dom';
 const Header = () => {
     const navContent =
@@ -12,7 +12,7 @@ const Header = () => {
         </>
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-violet-300 ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -31,7 +31,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='/login'><button className="btn" onClick={() => window.my_modal.showModal()}>Login</button></Link>
+                    <Link to='/login'><button className="btn bg-violet-500 hover:bg-violet-700 border-0 text-white" onClick={() => window.my_modal.showModal()}>Login</button></Link>
                 </div>
             </div>
         </div>
