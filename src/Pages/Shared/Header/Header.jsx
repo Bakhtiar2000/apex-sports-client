@@ -27,11 +27,11 @@ const Header = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                    {navContent}
+                        {navContent}
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <Link to='/login'><button className="btn" onClick={() => window.my_modal.showModal()}>Login</button></Link>
                 </div>
             </div>
         </div>
