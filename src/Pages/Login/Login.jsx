@@ -2,13 +2,20 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext)
     const [show, setShow] = useState(false)
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [error, setError] = useState('')
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+    const location = useLocation()
+    const navigate = useNavigate()
+    // console.log(navigate)
+    const from = location.state?.from?.pathname || '/'
 
     const handlePasswordToggle = () => {
         setShow(!show)
@@ -19,7 +26,17 @@ const Login = () => {
             .then(res => {
                 const loggedUser = res.user
                 console.log(loggedUser)
-                form.reset()
+                Swal.fire({
+                    title: 'Account login successful',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
+                navigate(from, { replace: true })
+                reset()
             })
             .catch(error => {
                 if (error.message == 'Firebase: Error (auth/wrong-password).') {
@@ -33,7 +50,7 @@ const Login = () => {
             .then(res => {
                 const loggedUser = res.user
                 console.log(loggedUser)
-                form.reset()
+                reset()
             })
             .catch(err => setError(err.message))
     }
@@ -73,7 +90,10 @@ const Login = () => {
                             </label>
                             <input className='relative input input-bordered' type={show ? 'text' : 'password'} {...register("password", { required: true })} />
                             <FaEye onClick={handlePasswordToggle} className='absolute bottom-[200px] right-12 text-slate-500 hover:text-slate-700' />
-                            {errors.password && <span className='text-red-500'>Password is required</span>}
+
+                            {errors.password && <span className='text-red-500 '>Password is required</span>}
+
+                            {error && <span className='text-red-500 text-sm'>{error}</span>}
                         </div>
 
 

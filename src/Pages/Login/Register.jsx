@@ -10,9 +10,9 @@ const Register = () => {
     const { createUser, updateUserProfile, logOut } = useContext(AuthContext)
     const [error, setError] = useState('')
     const [show, setShow] = useState(false)
-    
+
     const navigate = useNavigate()
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const handlePasswordToggle = () => {
         setShow(!show)
@@ -21,7 +21,7 @@ const Register = () => {
     const onSubmit = data => {
         // console.log(data)
         setError('')
-        if(data.password!== data.confirm){
+        if (data.password !== data.confirm) {
             setError('Password did not match')
             return
         }
@@ -33,7 +33,7 @@ const Register = () => {
 
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        const savedUser = { name: data.name, email: data.email }
+                        // const savedUser = { name: data.name, email: data.email }
 
                         Swal.fire({
                             title: 'Account created successfully',
@@ -133,11 +133,11 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Your Password*</span>
                             </label>
-                            <input className="relative input input-bordered" type={show ? 'text' : 'password'} {...register("password", { 
+                            <input className="relative input input-bordered" type={show ? 'text' : 'password'} {...register("password", {
                                 required: true,
                                 minLength: 6,
                                 pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
-                                 })} />
+                            })} />
                             <FaEye onClick={handlePasswordToggle} className='absolute bottom-[250px] right-12 text-slate-500 hover:text-slate-700' />
 
                             {errors.password?.type === 'required' && <span className='text-red-500'>Password is required</span>}
@@ -156,7 +156,7 @@ const Register = () => {
                             </label>
                             <input className="input input-bordered" type='password' {...register("confirm", { required: true })} />
                             {errors.confirm && <span className='text-red-500'>Confirming password is required</span>}
-                            {error && <span className='text-red-500'>{error}</span>}
+                            {error && <span className='text-red-500 text-sm'>{error}</span>}
                         </div>
 
 
