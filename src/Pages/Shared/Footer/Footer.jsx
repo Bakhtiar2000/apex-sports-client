@@ -1,6 +1,6 @@
 import React from 'react';
-import icon from '../../../../public/apex sports icon without bg.png'
-import logo from '../../../../public/apex sports logo without bg.png'
+import icon from '/assets/Logo/apex sports icon without bg.png'
+import logo from '/assets/Logo/apex sports logo without bg.png'
 
 const Footer = () => {
     return (
