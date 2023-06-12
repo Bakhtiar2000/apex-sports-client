@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../Pages/Shared/Header/Header';
 import { Outlet } from 'react-router-dom';
 import Footer from '../Pages/Shared/Footer/Footer';
 
 
 const Main = () => {
+    const [mode, setMode] = useState('day');
+
+    const dayStyles = {
+        backgroundColor: 'white',
+        color: 'black',
+    };
+
+    const nightStyles = {
+        backgroundColor: 'black',
+        color: 'white',
+    };
+
     return (
-        <div>
-            <Header></Header>
+        <div style={mode === 'day' ? dayStyles : nightStyles}>
+            <Header setMode={setMode}></Header>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>

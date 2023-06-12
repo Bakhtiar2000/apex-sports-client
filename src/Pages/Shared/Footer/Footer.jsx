@@ -5,7 +5,7 @@ import logo from '/assets/Logo/apex sports logo without bg.png'
 const Footer = () => {
     return (
         <div className=''>
-            <footer className="footer p-10 bg-violet-300 text-base-content">
+            <footer className="footer p-10 bg-gradient-to-r from-violet-300 to-fuchsia-300 text-base-content">
                 <div className='my-auto'>
                     <div className='flex items-center my-auto'>
                         <img src={icon} alt="" />
@@ -40,7 +40,7 @@ const Footer = () => {
                 </div>
             </footer>
 
-            <footer className="footer flex justify-center py-3 px-10 bg-violet-200 ">
+            <footer className="footer flex justify-center py-3 px-10 bg-gradient-to-r from-violet-100 to-fuchsia-100 ">
                 <div className="text-violet-700">
                     <p>Copyright © 2023 - All right reserved</p>
                 </div>
