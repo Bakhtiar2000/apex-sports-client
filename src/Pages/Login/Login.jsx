@@ -50,7 +50,16 @@ const Login = () => {
             .then(res => {
                 const loggedUser = res.user
                 console.log(loggedUser)
-                reset()
+                Swal.fire({
+                    title: 'Account login successful',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
+                navigate(from, { replace: true })
             })
             .catch(err => setError(err.message))
     }
