@@ -1,92 +1,92 @@
 [
     {
-        "id":1,
+        "_id":1,
         "image": "https://i.ibb.co/rmQ3Cw1/cricket-class.png",
         "name": "Cricket",
         "instructor": "John Smith",
         "available_seats": 9,
         "no_of_students": 41,
-        "price": 25
+        "price": 250
     },
     {
-        "id":2,
+        "_id":2,
         "image": "https://i.ibb.co/RPpxzxQ/badminton-class.png",
         "name": "badminton",
         "instructor": "Michell Johnson",
         "available_seats": 5,
         "no_of_students": 45,
-        "price": 30
+        "price": 300
     },
     {
-        "id":3,
+        "_id":3,
         "image": "https://i.ibb.co/BTkxmbx/tennis-class.png",
         "name": "Tennis",
         "instructor": "Emily Davis",
         "available_seats": 8,
         "no_of_students": 42,
-        "price": 20
+        "price": 200
     },
     {
-        "id":4,
+        "_id":4,
         "image": "https://i.ibb.co/FKpMjyt/football-class.png",
         "name": "Football",
         "instructor": "Michael Brown",
         "available_seats": 1,
         "no_of_students": 49,
-        "price": 35
+        "price": 350
     },
     {
-        "id":5,
+        "_id":5,
         "image": "https://i.ibb.co/ThK2ryt/dance.png",
         "name": "Zumba Dance",
         "instructor": "Jessica Wilson",
         "available_seats": 20,
         "no_of_students": 30,
-        "price": 25
+        "price": 250
     },
     {
-        "id":6,
+        "_id":6,
         "image": "https://i.ibb.co/9NMCVQY/strength-training.png",
         "name": "Strength Training",
         "instructor": "David Thompson",
         "available_seats": 10,
         "no_of_students": 40,
-        "price": 30
+        "price": 300
     },
     {
-        "id":7,
+        "_id":7,
         "image": "https://i.ibb.co/Xk4Q7Bx/cycling-class.png",
         "name": "Cycling",
         "instructor": "Michelle Anderson",
         "available_seats": 5,
         "no_of_students": 45,
-        "price": 25
+        "price": 250
     },
     {
-        "id":8,
+        "_id":8,
         "image": "https://i.ibb.co/Z2FKKcr/gymnastics-class.png",
         "name": "Gymnastics",
         "instructor": "Andrew Roberts",
         "available_seats": 7,
         "no_of_students": 43,
-        "price": 30
+        "price": 300
     },
     {
-        "id":9,
+        "_id":9,
         "image": "https://i.ibb.co/WgqxX33/yoga.png",
         "name": "Aerial Yoga",
         "instructor": "Sophia Lee",
         "available_seats": 13,
         "no_of_students": 37,
-        "price": 35
+        "price": 350
     },
     {
-        "id":10,
+        "_id":10,
         "image": "https://i.ibb.co/LY93SZm/workout.png",
         "name": "Bootcamp Workout",
         "instructor": "Daniel Harris",
         "available_seats": 15,
         "no_of_students": 35,
-        "price": 20
+        "price": 200
     }
 ]

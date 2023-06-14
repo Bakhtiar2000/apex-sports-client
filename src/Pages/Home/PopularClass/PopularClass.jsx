@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const PopularClass = () => {
     const [classes, setClasses] = useState([])
@@ -17,7 +18,7 @@ const PopularClass = () => {
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 my-10'>
                 {
                     classes.map(singleClass => <div
-                        key={singleClass.id}
+                        key={singleClass._id}
                         className="card w-80 md:w-96 bg-base-100 shadow-xl image-full mx-auto"
                     >
 
@@ -29,7 +30,7 @@ const PopularClass = () => {
                                 <p className='text-xs'>Students admitted: {singleClass.no_of_students}</p>
                             </div>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-primary">Enroll Now</button>
+                                <Link to='/classes'><button className="btn btn-primary">Enroll Now</button></Link>
                             </div>
                         </div>
                     </div>

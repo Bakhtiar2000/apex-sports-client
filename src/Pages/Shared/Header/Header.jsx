@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
 import icon from '/assets/Logo/apex sports icon without bg.png'
 import logo from '/assets/Logo/apex sports logo without bg.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 const Header = ({setMode}) => {
     const { user, logOut } = useContext(AuthContext)
+    const location= useLocation()
+    console.log(location)
+
     const handleLogOut = () => {
         logOut()
             .then()
@@ -24,7 +27,7 @@ const Header = ({setMode}) => {
         </>
     return (
         <div>
-            <div className="navbar bg-gradient-to-r from-violet-300 to-fuchsia-300 fixed z-30">
+            <div className={`navbar bg-gradient-to-r from-violet-300 to-fuchsia-300 ${location.pathname=== '/'? 'fixed': ''} z-30`}>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">

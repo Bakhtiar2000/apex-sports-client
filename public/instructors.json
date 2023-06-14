@@ -1,6 +1,6 @@
 [
       {
-        "id": 1,
+        "_id": 1,
         "image": "https://i.ibb.co/q1mRr27/instructor-1.png",
         "name": "John Smith",
         "email": "john.smith@gmail.com",
@@ -8,7 +8,7 @@
         "description": "John Smith is a highly experienced instructor with a passion for fitness and wellness. He specializes in strength training and has helped numerous clients achieve their fitness goals."
       },
       {
-        "id": 2,
+        "_id": 2,
         "image": "https://i.ibb.co/b1yXRCd/instructor-2.png",
         "name": "Michell Johnson",
         "email": "michell.johnson@gmail.com",
@@ -16,7 +16,7 @@
         "description": "Michell Johnson is a certified yoga instructor and mindfulness coach. She focuses on creating a peaceful and serene environment for her students to help them improve their mental and physical well-being."
       },
       {
-        "id": 3,
+        "_id": 3,
         "image": "https://i.ibb.co/Kh1Hycc/instructor-3.png",
         "name": "Emily Davis",
         "email": "emily.davis@gmail.com",
@@ -24,7 +24,7 @@
         "description": "Emily Davis is a professional dancer and choreographer. With years of experience in various dance styles, she offers dynamic and engaging dance classes that cater to dancers of all skill levels."
       },
       {
-        "id": 4,
+        "_id": 4,
         "image": "https://i.ibb.co/BcvjrYq/instructor-4.png",
         "name": "Michael Brown",
         "email": "michael.brown@gmail.com",
@@ -32,7 +32,7 @@
         "description": "Michael Brown is a former professional athlete and personal trainer. He specializes in sports-specific training and helps athletes optimize their performance and achieve their full potential."
       },
       {
-        "id": 5,
+        "_id": 5,
         "image": "https://i.ibb.co/t3fPPRh/instructor-10.png",
         "name": "Jessica Wilson",
         "email": "jessica.wilson@gmail.com",
@@ -40,7 +40,7 @@
         "description": "Jessica Wilson is a dedicated fitness instructor with expertise in cardiovascular workouts. She designs high-intensity training programs that boost endurance and promote overall fitness."
       },
       {
-        "id": 6,
+        "_id": 6,
         "image": "https://i.ibb.co/3dfh11r/instructor-5.png",
         "name": "David Thompson",
         "email": "david.thompson@gmail.com",
@@ -48,7 +48,7 @@
         "description": "David Thompson is a certified nutritionist and wellness coach. He educates individuals on the importance of healthy eating habits and helps them develop personalized nutrition plans."
       },
       {
-        "id": 7,
+        "_id": 7,
         "image": "https://i.ibb.co/55BsBpP/instructor-6.png",
         "name": "Michelle Anderson",
         "email": "michelle.anderson@gmail.com",
@@ -56,7 +56,7 @@
         "description": "Michelle Anderson is a skilled Pilates instructor with a strong background in rehabilitation exercises. She focuses on core strength and postural alignment to improve overall body functionality."
       },
       {
-        "id": 8,
+        "_id": 8,
         "image": "https://i.ibb.co/gDQScRT/instructor-7.png",
         "name": "Andrew Roberts",
         "email": "andrew.roberts@gmail.com",
@@ -64,7 +64,7 @@
         "description": "Andrew Roberts is a certified personal trainer who specializes in weight loss and body transformation. He provides personalized workout plans and motivational support to help clients achieve their fitness goals."
       },
       {
-        "id": 9,
+        "_id": 9,
         "image": "https://i.ibb.co/Dkrg2Tb/instructor-9.png",
         "name": "Sophia Lee",
         "email": "sophia.lee@gmail.com",
@@ -72,7 +72,7 @@
         "description": "Sophia Lee is a highly experienced group fitness instructor. Her energetic and fun-filled classes combine various workout styles, ensuring participants have a great time while improving their fitness levels."
       },
       {
-        "id": 10,
+        "_id": 10,
         "image": "https://i.ibb.co/DMffhwX/instructor-8.png",
         "name": "Daniel Harris",
         "email": "daniel.harris@gmail.com",
