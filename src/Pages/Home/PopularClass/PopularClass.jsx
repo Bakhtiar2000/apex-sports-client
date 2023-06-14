@@ -1,82 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const PopularClass = () => {
+    const [classes, setClasses] = useState([])
 
-    fetch('/classes.json')
-    .then(res=> res.json)
-    .then(data=> console.log(data))
+    useEffect(() => {
+        fetch('classes.json')
+            .then(res => res.json())
+            .then(data => setClasses(data))
+    }, [])
 
+    console.log(classes)
     return (
         <div>
             <h2 className='text-5xl text-center text-violet-800 mt-8 font-serif'>Popular Classes</h2>
 
-            {/* <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 my-10'>
-                <div className="card w-80 md:w-96 bg-base-100 shadow-xl image-full mx-auto">
-                    <figure><img src={class1} alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Cricket</h2>
-                        <p>Learn from the best!</p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Enroll Now</button>
-                        </div>
-                    </div>
-                </div>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 my-10'>
+                {
+                    classes.map(singleClass => <div
+                        key={singleClass.id}
+                        className="card w-80 md:w-96 bg-base-100 shadow-xl image-full mx-auto"
+                    >
 
-                <div className="card w-80 md:w-96 bg-base-100 shadow-xl image-full mx-auto">
-                    <figure><img src={class2} alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Football</h2>
-                        <p>Learn from the best!</p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Enroll Now</button>
+                        <figure><img src={singleClass.image} alt="Shoes" /></figure>
+                        <div className="card-body">
+                            <h2 className="card-title">{singleClass.name}</h2>
+                            <div className='mb-auto'>
+                                <p className='mb-2'>Instructor: {singleClass.instructor}</p>
+                                <p className='text-xs'>Students admitted: {singleClass.no_of_students}</p>
+                            </div>
+                            <div className="card-actions justify-end">
+                                <button className="btn btn-primary">Enroll Now</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    )}
 
-                <div className="card w-80 md:w-96 bg-base-100 shadow-xl image-full mx-auto">
-                    <figure><img src={class3} alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Badminton</h2>
-                        <p>Learn from the best!</p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Enroll Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="card w-80 md:w-96 bg-base-100 shadow-xl image-full mx-auto">
-                    <figure><img src={class4} alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Cycling</h2>
-                        <p>Learn from the best!</p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Enroll Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="card w-80 md:w-96 bg-base-100 shadow-xl image-full mx-auto">
-                    <figure><img src={class5} alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Tennis</h2>
-                        <p>Learn from the best!</p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Enroll Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="card w-80 md:w-96 bg-base-100 shadow-xl image-full mx-auto">
-                    <figure><img src={class6} alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Gymnastics</h2>
-                        <p>Learn from the best!</p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Enroll Now</button>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
+            </div>
         </div>
     );
 };
