@@ -8,7 +8,16 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
 import Classes from "../Pages/Classes/Classes";
 import Instructors from "../Pages/Instructors/Instructors";
-import Dashboard from "../Dashboard/Dashboard/Dashboard";
+import Dashboard from "../Layout/Dashboard/Dashboard";
+import AdminHome from "../Dashboard/Admin/AdminHome";
+import StudentHome from "../Dashboard/Student/StudentHome";
+import InstructorHome from "../Dashboard/Instructor/InstructorHome";
+import ManageClasses from "../Dashboard/Admin/ManageClasses";
+import ManageUsers from "../Dashboard/Admin/ManageUsers";
+import AddAClass from "../Dashboard/Instructor/AddAClass";
+import MyClasses from "../Dashboard/Instructor/MyClasses";
+import SelectedClasses from "../Dashboard/Student/SelectedClasses";
+import EnrolledClasses from "../Dashboard/Student/EnrolledClasses";
 
 const router = createBrowserRouter([
   {
@@ -35,13 +44,61 @@ const router = createBrowserRouter([
       {
         path: '/instructors',
         element: <Instructors></Instructors>
-      },
-      {
-        path: '/dashboard',
-        element: <Dashboard></Dashboard>
       }
     ]
   },
+  {
+    path: 'dashboard',
+    element: <Dashboard></Dashboard>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children:[
+
+      //Admin routes
+      {
+        path: 'adminHome',
+        element: <AdminHome></AdminHome>
+      },
+      {
+        path: 'manageClasses',
+        element: <ManageClasses></ManageClasses>
+      },
+      {
+        path: 'manageUsers',
+        element: <ManageUsers></ManageUsers>
+      },
+
+
+      //Instructor routes
+      {
+        path: 'instructorHome',
+        element: <InstructorHome></InstructorHome>
+      },
+      {
+        path: 'addAClass',
+        element: <AddAClass></AddAClass>
+      },
+      {
+        path: 'myClasses',
+        element: <MyClasses></MyClasses>
+      },
+
+
+      //Student routes
+      {
+        path: 'studentHome',
+        element: <StudentHome></StudentHome>
+      },
+      {
+        path: 'selectedClasses',
+        element: <SelectedClasses></SelectedClasses>
+      },
+      {
+        path: 'enrolledClasses',
+        element: <EnrolledClasses></EnrolledClasses>
+      }
+    ]
+
+  }
 ]);
 
 export default router;
