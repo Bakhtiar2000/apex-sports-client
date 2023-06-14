@@ -30,10 +30,10 @@ const Banner = () => {
 
     const AutoplaySlider = withAutoplay(AwesomeSlider);
     return (
-        <div className='flex gap-3 md:gap-5 p-5 sm:p-10 md:p-20'>
+        <div className='flex flex-col lg:flex-row gap-3 md:gap-5 p-5 sm:p-10 md:p-20'>
             <div className='flex-1 my-auto'>
-                <p style={{ fontFamily: 'EB Garamond, serif' }} className='text-md sm:text-2xl md:text-4xl max-w-md '>CREATING <span className='changing-text'>WORLD-CLASS </span>CHAMPION ATHLETES</p>
-                <p className='mb-3 mt-5'>We provide top-notch training and guidance in a wide range of sports disciplines. Whether you're a beginner looking to learn the basics or an elite athlete striving for greatness, our personalized coaching programs are designed to elevate your performance to new heights.</p>
+                <p style={{ fontFamily: 'EB Garamond, serif' }} className='text-2xl md:text-4xl max-w-md '>CREATING <span className='changing-text'>WORLD-CLASS </span>CHAMPION ATHLETES</p>
+                <p className='mb-3 mt-5 text-sm md:text-base'>We provide top-notch training and guidance in a wide range of sports disciplines. Whether you're a beginner looking to learn the basics or an elite athlete striving for greatness, our personalized coaching programs are designed to elevate your performance to new heights.</p>
 
                 <div className='flex items-center gap-8 text-left mb-8 mt-5'>
                     <div>
