@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../Providers/AuthProvider';
+import React, { useEffect } from 'react';
 import { FaHome } from 'react-icons/fa';
 import { TbHomeMove } from 'react-icons/tb';
 import { SiGoogleclassroom } from 'react-icons/si';
@@ -7,20 +6,34 @@ import { MdManageAccounts, MdOutlinePendingActions } from 'react-icons/md';
 import { RiListSettingsFill } from 'react-icons/ri';
 import { BiAddToQueue, BiSelectMultiple } from 'react-icons/bi';
 import { IoSchool } from 'react-icons/io5';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 
 
 const Dashboard = () => {
-    const { user } = useContext(AuthContext)
+    const navigate = useNavigate();
     const isAdmin = false
-    const isInstructor = true
+    const isInstructor = false
+
+    useEffect(() => {
+        let initialLink = '/dashboard/studentHome';
+
+        if (isAdmin) {
+            initialLink = '/dashboard/adminHome';
+        } else if (isInstructor) {
+            initialLink = '/dashboard/instructorHome';
+        }
+
+        navigate(initialLink);
+    }, [isAdmin, isInstructor, navigate]);
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
-                <h2 className='text-4xl font-serif text-center my-10 text-violet-800'>Welcome to dashboard, {user?.displayName}</h2>
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                <label htmlFor="my-drawer-2" className="btn btn-outline rounded-full btn-primary drawer-button lg:hidden me-auto mt-5 ms-5">
+                    <span className="menu-icon">☰</span>
+                </label>
                 <Outlet></Outlet>
+
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
