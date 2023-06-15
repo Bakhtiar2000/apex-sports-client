@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAxios from '../../../Hooks/useAxios';
 
 const PopularClass = () => {
+    const [axiosURL] = useAxios()
     const [classes, setClasses] = useState([])
 
-    useEffect(() => {
-        fetch('classes.json')
-            .then(res => res.json())
-            .then(data => setClasses(data))
-    }, [])
+
+    axiosURL.get('classes?limit=6')
+        .then(data => setClasses(data.data))
+
 
     console.log(classes)
     return (

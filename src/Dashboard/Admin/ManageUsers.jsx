@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const ManageUsers = () => {
-    const [users, setUsers] = useState()
+    const [users, setUsers] = useState([])
+    const [instructorDisabled, setInstructorDisabled] = useState(false)
+    const [adminDisabled, setAdminDisabled] = useState(false)
 
     useEffect(() => {
-        fetch('../../../public/classes.json')
+        fetch('../../../public/instructors.json')
             .then(res => res.json())
             .then(data => setUsers(data))
     }, [])
 
     const handleMakeInstructor = id => {
         console.log(id)
+        setInstructorDisabled(true)
     }
 
     const handleMakeAdmin = id => {
         console.log(id)
+        setInstructorDisabled(true)
+        setAdminDisabled(true)
     }
     console.log(users)
     return (
@@ -50,8 +55,8 @@ const ManageUsers = () => {
                                 <td>{user.email}</td>
                                 <td>
                                     <div className='flex justify-center gap-2'>
-                                        <button className='btn btn-outline btn-primary' onClick={() => handleMakeInstructor(user._id)}>Make Instructor</button>
-                                        <button className='btn btn-outline btn-primary' onClick={() => handleMakeAdmin(user._id)}>Make Admin</button>
+                                        <button className='btn btn-outline btn-primary btn-sm' disabled={instructorDisabled} onClick={() => handleMakeInstructor(user._id)}>Make Instructor</button>
+                                        <button className='btn btn-outline btn-primary btn-sm' disabled={adminDisabled} onClick={() => handleMakeAdmin(user._id)}>Make Admin</button>
                                     </div>
                                 </td>
                             </tr>)

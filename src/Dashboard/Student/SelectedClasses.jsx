@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const SelectedClasses = () => {
     const [selectedClasses, setSelectedClasses] = useState([])
@@ -13,13 +14,6 @@ const SelectedClasses = () => {
         console.log(id)
         //TODO: fetch url from useAxios
     }
-
-
-    const handlePayment= id=>{
-        console.log(id)
-        //TODO: fetch url from useAxios
-    }
-
 
     return (
         <div className='w-full px-8'>
@@ -42,8 +36,8 @@ const SelectedClasses = () => {
                                 <td>{index + 1}</td>
                                 <td>{selectedClass.name}</td>
                                 <td>{selectedClass.instructor}</td>
-                                <td><button className="btn btn-sm btn-ghost bg-green-600 text-white" onClick={() => handlePayment(addedClass._id)}>PAY</button></td>{/* TODO: Watch Out for the backend */}
-                                <td><button className="btn btn-sm btn-ghost bg-red-500 text-white" onClick={() => handleDelete(addedClass._id)}>Delete</button></td>
+                                <td><Link to='/dashboard/payment'><button className="btn btn-sm btn-ghost bg-green-600 text-white">PAY</button></Link></td>
+                                <td><button className="btn btn-sm btn-ghost bg-red-500 text-white" onClick={() => handleDelete(selectedClass._id)}>Delete</button></td>
                             </tr>)
                         }
                     </tbody>

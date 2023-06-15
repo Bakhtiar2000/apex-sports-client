@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './PopularInstructor.css';
+import useAxios from '../../../Hooks/useAxios';
 
 const PopularInstructor = () => {
+const [axiosURL] = useAxios()
   const [instructors, setInstructors] = useState([]);
   const [hoveredId, setHoveredId] = useState(null);
 
-  useEffect(() => {
-    fetch('instructors.json')
-      .then(res => res.json())
-      .then(data => setInstructors(data));
-  }, []);
+  axiosURL.get('instructors?limit=6')
+    .then(data => setInstructors(data.data))
 
   const handleHover = id => {
     setHoveredId(id);

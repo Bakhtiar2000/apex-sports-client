@@ -1,6 +1,5 @@
 [
     {
-        "_id":1,
         "image": "https://i.ibb.co/rmQ3Cw1/cricket-class.png",
         "name": "Cricket",
         "instructor": "John Smith",
@@ -10,7 +9,6 @@
         "price": 250
     },
     {
-        "_id":2,
         "image": "https://i.ibb.co/RPpxzxQ/badminton-class.png",
         "name": "badminton",
         "instructor": "Michell Johnson",
@@ -20,7 +18,6 @@
         "price": 300
     },
     {
-        "_id":3,
         "image": "https://i.ibb.co/BTkxmbx/tennis-class.png",
         "name": "Tennis",
         "instructor": "Emily Davis",
@@ -30,7 +27,6 @@
         "price": 200
     },
     {
-        "_id":4,
         "image": "https://i.ibb.co/FKpMjyt/football-class.png",
         "name": "Football",
         "instructor": "Michael Brown",
@@ -40,7 +36,6 @@
         "price": 350
     },
     {
-        "_id":5,
         "image": "https://i.ibb.co/ThK2ryt/dance.png",
         "name": "Zumba Dance",
         "instructor": "Jessica Wilson",
@@ -50,7 +45,6 @@
         "price": 250
     },
     {
-        "_id":6,
         "image": "https://i.ibb.co/9NMCVQY/strength-training.png",
         "name": "Strength Training",
         "instructor": "David Thompson",
@@ -60,7 +54,6 @@
         "price": 300
     },
     {
-        "_id":7,
         "image": "https://i.ibb.co/Xk4Q7Bx/cycling-class.png",
         "name": "Cycling",
         "instructor": "Michelle Anderson",
@@ -70,7 +63,6 @@
         "price": 250
     },
     {
-        "_id":8,
         "image": "https://i.ibb.co/Z2FKKcr/gymnastics-class.png",
         "name": "Gymnastics",
         "instructor": "Andrew Roberts",
@@ -80,7 +72,6 @@
         "price": 300
     },
     {
-        "_id":9,
         "image": "https://i.ibb.co/WgqxX33/yoga.png",
         "name": "Aerial Yoga",
         "instructor": "Sophia Lee",
@@ -90,7 +81,6 @@
         "price": 350
     },
     {
-        "_id":10,
         "image": "https://i.ibb.co/LY93SZm/workout.png",
         "name": "Bootcamp Workout",
         "instructor": "Daniel Harris",
