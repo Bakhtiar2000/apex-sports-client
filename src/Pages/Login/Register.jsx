@@ -5,8 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Register.css'
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProvider';
+import useAxios from '../../Hooks/useAxios';
 
 const Register = () => {
+    const [axiosURL] = useAxios()
     const { createUser, updateUserProfile, logOut } = useContext(AuthContext)
     const [error, setError] = useState('')
     const [show, setShow] = useState(false)
@@ -33,26 +35,41 @@ const Register = () => {
 
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        // const savedUser = { name: data.name, email: data.email }
-
-                        Swal.fire({
-                            title: 'Account created successfully',
-                            showClass: {
-                                popup: 'animate__animated animate__fadeInDown'
+                        const savedUser = { name: data.name, email: data.email, role:'student' }
+                        console.log(savedUser)
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
                             },
-                            hideClass: {
-                                popup: 'animate__animated animate__fadeOutUp'
-                            }
+                            body: JSON.stringify(savedUser)
                         })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    navigate('/')
+                                    Swal.fire({
+                                        title: 'Account created successfully',
+                                        showClass: {
+                                            popup: 'animate__animated animate__fadeInDown'
+                                        },
+                                        hideClass: {
+                                            popup: 'animate__animated animate__fadeOutUp'
+                                        }
+                                    })
+                                }
+                            })
+
+
 
                     })
                     .catch(err => console.log(err.message))
 
-                logOut()
-                    .then(() => {
-                        navigate('/login')
-                    })
-                    .catch(err => console.log(err.message))
+                // logOut()
+                //     .then(() => {
+                //         navigate('/login')
+                //     })
+                //     .catch(err => console.log(err.message))
             })
 
             .catch(err => console.log(err))

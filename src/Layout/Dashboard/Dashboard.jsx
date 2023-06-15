@@ -7,12 +7,17 @@ import { RiListSettingsFill } from 'react-icons/ri';
 import { BiAddToQueue, BiSelectMultiple } from 'react-icons/bi';
 import { IoSchool } from 'react-icons/io5';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import UserRoleRoute from '../../Routes/UserRoleRoute';
 
 
 const Dashboard = () => {
     const navigate = useNavigate();
-    const isAdmin = true
-    const isInstructor = false
+    const [currentUser]= UserRoleRoute()
+    let isAdmin = false
+    let isInstructor = false
+
+    if(currentUser.role=== 'admin') isAdmin=true
+    if(currentUser.role=== 'instructor') isInstructor=true
 
     useEffect(() => {
         let initialLink = '/dashboard/studentHome';

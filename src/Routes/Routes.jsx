@@ -19,6 +19,7 @@ import MyClasses from "../Dashboard/Instructor/MyClasses";
 import SelectedClasses from "../Dashboard/Student/SelectedClasses";
 import EnrolledClasses from "../Dashboard/Student/EnrolledClasses";
 import Payment from "../Dashboard/Student/Payment/Payment";
+import UserRoleRoute from "./UserRoleRoute";
 
 const router = createBrowserRouter([
   {

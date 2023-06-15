@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import useAxios from '../../../Hooks/useAxios';
 
 const PopularClass = () => {
-    const [axiosURL] = useAxios()
+    const [axiosURL]= useAxios()
     const [classes, setClasses] = useState([])
 
-
-    axiosURL.get('classes?limit=6')
-        .then(data => setClasses(data.data))
-
+    useEffect(() => {
+        axiosURL.get('classes?limit=6')
+            .then(data => setClasses(data.data))
+    }, [])
 
     console.log(classes)
     return (

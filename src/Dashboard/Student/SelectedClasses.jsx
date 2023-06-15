@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAxios from '../../Hooks/useAxios';
 
 const SelectedClasses = () => {
+    const [axiosURL] = useAxios()
     const [selectedClasses, setSelectedClasses] = useState([])
 
     useEffect(() => {
-        fetch('../../../public/classes.json')
-            .then(res => res.json())
-            .then(data => setSelectedClasses(data))
+        axiosURL.get('classes')
+            .then(data => setSelectedClasses(data.data))
     }, [])
 
     const handleDelete= id=>{

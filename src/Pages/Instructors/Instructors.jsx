@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import useAxios from '../../Hooks/useAxios';
 
 const Instructors = () => {
+    const [axiosURL] = useAxios()
     const [instructors, setInstructors] = useState([]);
+
     useEffect(() => {
-        fetch('instructors.json')
-            .then(res => res.json())
-            .then(data => setInstructors(data));
-    }, []);
+        axiosURL.get('instructors')
+            .then(data => setInstructors(data.data))
+    }, [])
+
     return (
         <div className='my-16'>
             <h2 className='text-3xl text-center mb-6 font-serif text-violet-800'>Instructors</h2>
