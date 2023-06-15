@@ -4,6 +4,7 @@
         "image": "https://i.ibb.co/rmQ3Cw1/cricket-class.png",
         "name": "Cricket",
         "instructor": "John Smith",
+        "instructor_email": "john.smith@gmail.com",
         "available_seats": 9,
         "no_of_students": 41,
         "price": 250
@@ -13,6 +14,7 @@
         "image": "https://i.ibb.co/RPpxzxQ/badminton-class.png",
         "name": "badminton",
         "instructor": "Michell Johnson",
+        "instructor_email": "michell.johnson@gmail.com",
         "available_seats": 5,
         "no_of_students": 45,
         "price": 300
@@ -22,6 +24,7 @@
         "image": "https://i.ibb.co/BTkxmbx/tennis-class.png",
         "name": "Tennis",
         "instructor": "Emily Davis",
+        "instructor_email": "emily.davis@gmail.com",
         "available_seats": 8,
         "no_of_students": 42,
         "price": 200
@@ -31,6 +34,7 @@
         "image": "https://i.ibb.co/FKpMjyt/football-class.png",
         "name": "Football",
         "instructor": "Michael Brown",
+        "instructor_email": "michael.brown@gmail.com",
         "available_seats": 1,
         "no_of_students": 49,
         "price": 350
@@ -40,6 +44,7 @@
         "image": "https://i.ibb.co/ThK2ryt/dance.png",
         "name": "Zumba Dance",
         "instructor": "Jessica Wilson",
+        "instructor_email": "jessica.wilson@gmail.com",
         "available_seats": 20,
         "no_of_students": 30,
         "price": 250
@@ -49,6 +54,7 @@
         "image": "https://i.ibb.co/9NMCVQY/strength-training.png",
         "name": "Strength Training",
         "instructor": "David Thompson",
+        "instructor_email": "david.thompson@gmail.com",
         "available_seats": 10,
         "no_of_students": 40,
         "price": 300
@@ -58,6 +64,7 @@
         "image": "https://i.ibb.co/Xk4Q7Bx/cycling-class.png",
         "name": "Cycling",
         "instructor": "Michelle Anderson",
+        "instructor_email": "michelle.anderson@gmail.com",
         "available_seats": 5,
         "no_of_students": 45,
         "price": 250
@@ -67,6 +74,7 @@
         "image": "https://i.ibb.co/Z2FKKcr/gymnastics-class.png",
         "name": "Gymnastics",
         "instructor": "Andrew Roberts",
+        "instructor_email": "andrew.roberts@gmail.com",
         "available_seats": 7,
         "no_of_students": 43,
         "price": 300
@@ -76,6 +84,7 @@
         "image": "https://i.ibb.co/WgqxX33/yoga.png",
         "name": "Aerial Yoga",
         "instructor": "Sophia Lee",
+        "instructor_email": "sophia.lee@gmail.com",
         "available_seats": 13,
         "no_of_students": 37,
         "price": 350
@@ -85,6 +94,7 @@
         "image": "https://i.ibb.co/LY93SZm/workout.png",
         "name": "Bootcamp Workout",
         "instructor": "Daniel Harris",
+        "instructor_email": "daniel.harris@gmail.com",
         "available_seats": 15,
         "no_of_students": 35,
         "price": 200

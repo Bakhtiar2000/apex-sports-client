@@ -11,7 +11,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
     const navigate = useNavigate();
-    const isAdmin = false
+    const isAdmin = true
     const isInstructor = false
 
     useEffect(() => {
