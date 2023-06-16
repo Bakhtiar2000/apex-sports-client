@@ -16,12 +16,13 @@ const Payment = () => {
     const payingClassName= payingClass? payingClass.name : 'class not found'
     console.log(payingValue)
     const payingClassImage= payingClass? payingClass.image : 'image not found'
+    const payingId= payingClass? payingClass._id : 'id not found'
 
     return (
         <div className="w-[600px] mx-auto">
             <h3 className="text-4xl font-serif text-center my-10 text-violet-800">Payment gateway</h3>
             <Elements stripe={stripePromise}>
-                <PaymentForm price={payingValue} instructor={payingInstructor} class_name={payingClassName} image={payingClassImage}></PaymentForm>
+                <PaymentForm price={payingValue} instructor={payingInstructor} class_name={payingClassName} image={payingClassImage} id={payingId}></PaymentForm>
             </Elements>
 
         </div>

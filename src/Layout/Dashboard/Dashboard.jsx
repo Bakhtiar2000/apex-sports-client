@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { FaHome } from 'react-icons/fa';
 import { TbHomeMove } from 'react-icons/tb';
 import { SiGoogleclassroom } from 'react-icons/si';
-import { MdManageAccounts, MdOutlinePendingActions } from 'react-icons/md';
+import { MdManageAccounts, MdOutlinePendingActions, MdPayments } from 'react-icons/md';
 import { RiListSettingsFill } from 'react-icons/ri';
 import { BiAddToQueue, BiSelectMultiple } from 'react-icons/bi';
 import { IoSchool } from 'react-icons/io5';
@@ -62,6 +62,7 @@ const Dashboard = () => {
                                     <li><NavLink to='/dashboard/studentHome'><FaHome /> Student Home</NavLink></li>
                                     <li><NavLink to='/dashboard/selectedClasses'><MdOutlinePendingActions /> My selected classes</NavLink></li>
                                     <li><NavLink to='/dashboard/enrolledClasses'><BiSelectMultiple /> My enrolled classes</NavLink></li>
+                                    <li><NavLink to='/dashboard/paymentHistory'><MdPayments /> My Payment History</NavLink></li>
                                 </>
                     }
 

@@ -6,10 +6,11 @@ import './Register.css'
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProvider';
 import useAxios from '../../Hooks/useAxios';
+import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
     const [axiosURL] = useAxios()
-    const { createUser, updateUserProfile, logOut } = useContext(AuthContext)
+    const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext)
     const [error, setError] = useState('')
     const [show, setShow] = useState(false)
 
@@ -35,7 +36,7 @@ const Register = () => {
 
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        const savedUser = { name: data.name, email: data.email, role:'student' }
+                        const savedUser = { name: data.name, email: data.email, role: 'student' }
                         console.log(savedUser)
                         fetch('https://apex-sports-server.vercel.app/users', {
                             method: 'POST',
@@ -76,12 +77,36 @@ const Register = () => {
         reset()
     }
 
+    const handleLogInWithGoogle = () => {
+        googleSignIn()
+            .then(res => {
+                const loggedUser = res.user
+                console.log(loggedUser)
+                navigate('/')
+                Swal.fire({
+                    title: 'Account created successfully',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
+            })
+            .catch(err => setError(err.message))
+        }
+
     return (
         <div className="hero min-h-screen login-page-cover-photo">
 
             <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl bg-violet-100">
                 <div className="card-body">
                     <h1 className="text-3xl text-center font-semibold mb-5">Create account in <span className='changing-text'>Apex sports</span></h1>
+                    <button onClick={handleLogInWithGoogle} className="btn bg-white w-60 mx-auto">
+                        <span className='mr-2 text-xl'><FcGoogle /> </span> Continue with google
+                    </button>
+
+                    <div className="divider">OR</div>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         {/* Name */}

@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Swal from 'sweetalert2';
 
-const PaymentForm = ({ price, class_name, instructor, image }) => {
+const PaymentForm = ({ price, class_name, instructor, image, id }) => {
     const stripe= useStripe()
     const elements= useElements()
     const {user}= useContext(AuthContext)
@@ -17,10 +17,10 @@ const PaymentForm = ({ price, class_name, instructor, image }) => {
     const [clientSecret, setClientSecret] = useState('')
     const [processing, setProcessing] = useState(false)
 
-    console.log(user.email, user.displayName, price, class_name, instructor)
+    // console.log(user.email, user.displayName, price, class_name, instructor)
     useEffect(() => {
         if(price>0){
-            axiosURL.post('/create-payment-intent', { price })
+            axiosURL.post('create-payment-intent', { price })
             .then(data => {
                 // console.log(data.data.clientSecret)
                 setClientSecret(data.data.clientSecret)
@@ -85,7 +85,7 @@ const PaymentForm = ({ price, class_name, instructor, image }) => {
                 image
             }
 
-            axiosURL.post('/payments', payment)
+            axiosURL.post('payments', payment)
             .then(res=> {
                 console.log(res.data)
                 if(res.data.insertedId){
@@ -96,6 +96,12 @@ const PaymentForm = ({ price, class_name, instructor, image }) => {
                       )
                 }
             })
+
+            axiosURL.delete(`selections/${id}`)
+            .then(data=> console.log(data.data.deletedCount))
+
+            axiosURL.patch(`/classes/${id}`)
+            .then(data=> console.log(data.data))
         }
 
     }
