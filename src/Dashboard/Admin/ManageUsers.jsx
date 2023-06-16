@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import useAxios from '../../Hooks/useAxios';
+import UserRoleRoute from '../../Routes/UserRoleRoute';
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([])
+    const [currentUser]= UserRoleRoute()
+    const [axiosURL]= useAxios()
     const [instructorDisabled, setInstructorDisabled] = useState(false)
     const [adminDisabled, setAdminDisabled] = useState(false)
 
+    if(currentUser.role=== 'admin')  setAdminDisabled(true)
+    if(currentUser.role=== 'instructor')  setInstructorDisabled(true)
+
     useEffect(() => {
-        fetch('../../../public/instructors.json')
-            .then(res => res.json())
-            .then(data => setUsers(data))
+        axiosURL.get('users')
+            .then(data => setUsers(data.data))
     }, [])
 
     const handleMakeInstructor = id => {

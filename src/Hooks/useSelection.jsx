@@ -8,13 +8,15 @@ const useSelection = () => {
     const [axiosURL] = useAxios()
     const { refetch, data: selection = [] } = useQuery({
         queryKey: ['selections', user?.email],
-        // enabled: !!user?.email && !!localStorage.getItem('access-token'),
+       
         queryFn: async () => {
-                const res = await axiosURL(`/selections?email=${user?.email}`)
-                return res.data
-            
+            const res = await axiosURL(`selections?email=${user?.email}`)
+
+            return res.data
+
         }
     })
+    // console.log(selection)
     return [selection, refetch]
 };
 

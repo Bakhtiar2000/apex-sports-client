@@ -3,6 +3,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UserRoleRoute from '../../Routes/UserRoleRoute';
+import useSelection from '../../Hooks/useSelection';
 
 const SingleClass = ({ usedClass }) => {
     const { _id, name, price, instructor, available_seats, image } = usedClass
@@ -11,18 +12,16 @@ const SingleClass = ({ usedClass }) => {
     const navigate= useNavigate()
     const location= useLocation()
     const [currentUser]= UserRoleRoute()
+    const [, refetch]= useSelection()
+    // console.log(currentUser)
+
     useEffect(() => {
-        if (
-            currentUser.role === 'admin' ||
-            currentUser.role === 'instructor' ||
-            available_seats === 0
-        ) {
-            setDisabled(true);
-        }
+        if (currentUser.role === 'admin' || currentUser.role === 'instructor' || available_seats === 0) setDisabled(true);
     }, [currentUser.role, available_seats]);
 
     const handleSelectClass = () => {
-        if(user  && user?.email){
+        
+        if(user && user?.email){
             const selected= {classId: _id, name, instructor, image, email: user.email, price}
             fetch('http://localhost:5000/selections', {
                 method: 'POST',
@@ -35,6 +34,8 @@ const SingleClass = ({ usedClass }) => {
             .then(data=> {
                 console.log(data)
                 if(data.insertedId){
+                    setDisabled(true)
+                    refetch()
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',

@@ -13,6 +13,7 @@ const UserRoleRoute = () => {
             .then(data => setCurrentUser(data.data))
         }
     }, [user?.email])
+    
     console.log(currentUser)
     return [currentUser]
 };

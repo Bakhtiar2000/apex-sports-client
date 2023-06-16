@@ -14,12 +14,6 @@ const Classes = () => {
             .then(data => setClasses(data.data))
     }, [])
 
-    // TODO: Could not navigate to login page
-    const handleSelectClass = id => {
-        console.log(id)
-        user || <Navigate to='/login'></Navigate>
-
-    }
     return (
         <div className='my-16'>
             <h2 className='text-4xl text-center mb-6  font-serif text-violet-800'>Classes</h2>

@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import useAxios from '../../Hooks/useAxios';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { useContext } from 'react';
 
 const MyClasses = () => {
+    const {user}= useContext(AuthContext)
+    const [axiosURL]= useAxios()
     const [addedClasses, setAddedClasses] = useState([]);
 
     // TODO: Fetch the data Right Url
     useEffect(() => {
-        fetch('../../../public/instructors.json')
-            .then(res => res.json())
-            .then(data => setAddedClasses(data));
-    }, []);
+        axiosURL.get(`addedClasses?email=${user?.email}`)
+            .then(data => setAddedClasses(data.data))
+    }, [])
 
     const handleUpdate = id => {
         console.log(id)
@@ -42,7 +46,7 @@ const MyClasses = () => {
                                 <td>{addedClass.no_of_students}</td>
                                 <td>{addedClass.feedback}</td> {/* Watch Out for the backend */}
                                 <td>{addedClass.status}</td> {/* Watch Out for the backend */}
-                                <td><button  className="btn btn-sm btn-ghost bg-violet-600 text-white" onClick={() => handleUpdate(addedClass._id)}>Update</button></td>
+                                <td><button className="btn btn-sm btn-ghost bg-violet-600 text-white" onClick={() => handleUpdate(addedClass._id)}>Update</button></td>
                             </tr>)
                         }
                     </tbody>

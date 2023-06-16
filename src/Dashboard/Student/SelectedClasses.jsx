@@ -1,19 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAxios from '../../Hooks/useAxios';
+import { AuthContext } from '../../Providers/AuthProvider';
+import useSelection from '../../Hooks/useSelection';
+import Swal from 'sweetalert2';
 
 const SelectedClasses = () => {
     const [axiosURL] = useAxios()
-    const [selectedClasses, setSelectedClasses] = useState([])
-
-    useEffect(() => {
-        axiosURL.get('classes')
-            .then(data => setSelectedClasses(data.data))
-    }, [])
+    const [selection, refetch]= useSelection()
+    // console.log(selection)
 
     const handleDelete= id=>{
         console.log(id)
-        //TODO: fetch url from useAxios
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosURL.delete(`selections/${id}`)
+                    .then(data => {
+                        console.log(data.data.deletedCount)
+                        if (data.data.deletedCount > 0) {
+                            refetch()
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+
+                    })
+            }
+        })
     }
 
     return (
@@ -33,7 +56,7 @@ const SelectedClasses = () => {
                     </thead>
                     <tbody>
                         {
-                            selectedClasses.map((selectedClass, index) => <tr key={selectedClass._id} className="hover">
+                            selection.map((selectedClass, index) => <tr key={selectedClass._id} className="hover">
                                 <td>{index + 1}</td>
                                 <td>{selectedClass.name}</td>
                                 <td>{selectedClass.instructor}</td>

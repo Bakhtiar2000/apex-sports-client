@@ -1,34 +1,49 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import useAxios from '../../Hooks/useAxios';
 
 const AddAClass = () => {
-    const {user}= useContext(AuthContext)
-    const handleAddAClass = event => {
-        event.preventDefault()
-        const form = event.target
-        const class_name= form.class_name.value;
-        const photo= form.photo.value;
-        const instructor_name= form.Instructor_name.value;
-        const email= form.email.value;
-        const price= form.price.value;
-        const seats= form.seats.value;
+    const { user } = useContext(AuthContext)
+    const [axiosURL]= useAxios()
+    const { register, handleSubmit, reset } = useForm();
+
+    const onSubmit = data => {
+        console.log(data)
 
         const AddedClass={
-            name: class_name,
-            image: photo,
-            instructor: instructor_name,
-            instructor_email: email,
-            price,
+            name: data.name,
+            image: data.photo,
+            instructor: data.instructor_name,
+            instructor_email: data.email,
+            price: data.price,
             no_of_students: 0,
-            available_seats:seats
+            status: 'pending',
+            available_seats: data.seats
         }
         console.log(AddedClass)
+
+        axiosURL.post('addedClasses', AddedClass)
+        .then(data=> {
+            console.log(data.data)
+            if(data.data.insertedId){
+                reset()
+                Swal.fire(
+                    'Good job!',
+                    'Class added request sent',
+                    'success'
+                  )
+                
+            }
+        })
     }
+
     return (
         <div className='w-full px-8'>
             <h2 className='text-4xl font-serif text-center my-10 text-violet-800'>Add a class</h2>
 
-            <form onSubmit={handleAddAClass}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
                     {/* Picture URL */}
@@ -36,7 +51,7 @@ const AddAClass = () => {
                         <label className="label">
                             <span className="label-text">Class Image</span>
                         </label>
-                        <input type="text" name="photo" placeholder="PhotoURL" className="input input-bordered" />
+                        <input className="input input-bordered" placeholder="PhotoURL" type='text' {...register("photo")} />
                     </div>
 
                     {/* Class Name */}
@@ -44,7 +59,7 @@ const AddAClass = () => {
                         <label className="label">
                             <span className="label-text">Class Name</span>
                         </label>
-                        <input type="text" name="class_name" placeholder="class name" className="input input-bordered" />
+                        <input className="input input-bordered" placeholder="class name" type='text' {...register("name")} />
                     </div>
 
                     {/* Instructor Name */}
@@ -52,9 +67,7 @@ const AddAClass = () => {
                         <label className="label">
                             <span className="label-text">Instructor Name</span>
                         </label>
-                        <input type="text" name="instructor_name"
-                            defaultValue={user?.displayName}
-                            placeholder="Instructor name" className="input input-bordered" />
+                        <input defaultValue={user?.displayName} className="input input-bordered" placeholder="Instructor name" type='text' {...register("instructor_name")} />
                     </div>
 
                     {/* Instructor Email */}
@@ -62,9 +75,7 @@ const AddAClass = () => {
                         <label className="label">
                             <span className="label-text">Instructor Email</span>
                         </label>
-                        <input type="text" name="email"
-                            defaultValue={user?.email}
-                            placeholder="Instructor email" className="input input-bordered" />
+                        <input defaultValue={user?.email} className="input input-bordered" placeholder="Instructor email" type='email' {...register("email")} />
                     </div>
 
                     {/* Price */}
@@ -72,7 +83,7 @@ const AddAClass = () => {
                         <label className="label">
                             <span className="label-text">Price</span>
                         </label>
-                        <input type="text" name="price" placeholder="Class fee" className="input input-bordered" />
+                        <input className="input input-bordered" placeholder="Class fee" type='text' {...register("price")} />
                     </div>
 
                     {/* Available seats */}
@@ -80,7 +91,7 @@ const AddAClass = () => {
                         <label className="label">
                             <span className="label-text">Available seats</span>
                         </label>
-                        <input type="text" name="seats" placeholder="Available seats" className="input input-bordered" />
+                        <input className="input input-bordered" placeholder="Available seats" type='text' {...register("seats")} />
                     </div>
 
                 </div>
