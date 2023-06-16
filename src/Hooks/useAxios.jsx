@@ -5,7 +5,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 
 
 const axiosURL = axios.create({
-  baseURL: 'http://localhost:5000/', 
+  baseURL: 'https://apex-sports-server.vercel.app/', 
 });
 
 const useAxios = () => {

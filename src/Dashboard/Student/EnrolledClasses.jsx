@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import useAxios from '../../Hooks/useAxios';
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const EnrolledClasses = () => {
+    const {user}= useContext(AuthContext)
+    const [axiosURL]= useAxios()
     const [enrolledClasses, setEnrolledClasses] = useState([])
 
     useEffect(() => {
-        fetch('../../../public/classes.json')
-            .then(res => res.json())
-            .then(data => setEnrolledClasses(data))
+        axiosURL.get(`payments?email=${user?.email}`)
+            .then(data => setEnrolledClasses(data.data))
     }, [])
+
+    console.log(enrolledClasses)
     return (
         <div className='w-full px-8'>
             <h2 className='text-4xl font-serif text-center my-10 text-violet-800'>My enrolled classes</h2>
@@ -30,12 +36,12 @@ const EnrolledClasses = () => {
                                     <div className="flex items-center space-x-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src={enrolledClass.image} alt="Avatar Tailwind CSS Component" />
+                                                <img src={enrolledClass?.image} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td>{enrolledClass.name}</td>
+                                <td>{enrolledClass.class_name}</td>
                                 <td>{enrolledClass.instructor}</td>
                             </tr>)
                         }

@@ -50,6 +50,7 @@ const SelectedClasses = () => {
                             <th>#</th>
                             <th>Class name</th>
                             <th>Instructor</th>
+                            <th>Price</th>
                             <th>Enroll</th>
                             <th>Action</th>
                         </tr>
@@ -60,7 +61,8 @@ const SelectedClasses = () => {
                                 <td>{index + 1}</td>
                                 <td>{selectedClass.name}</td>
                                 <td>{selectedClass.instructor}</td>
-                                <td><Link to='/dashboard/payment'><button className="btn btn-sm btn-ghost bg-green-600 text-white">PAY</button></Link></td>
+                                <td>{selectedClass.price}</td>
+                                <td><Link to={`/dashboard/payment/${selectedClass._id}`}><button className="btn btn-sm btn-ghost bg-green-600 text-white">PAY</button></Link></td>
                                 <td><button className="btn btn-sm btn-ghost bg-red-500 text-white" onClick={() => handleDelete(selectedClass._id)}>Delete</button></td>
                             </tr>)
                         }

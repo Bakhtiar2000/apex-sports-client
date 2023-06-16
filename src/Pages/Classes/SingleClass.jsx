@@ -23,7 +23,7 @@ const SingleClass = ({ usedClass }) => {
         
         if(user && user?.email){
             const selected= {classId: _id, name, instructor, image, email: user.email, price}
-            fetch('http://localhost:5000/selections', {
+            fetch('https://apex-sports-server.vercel.app/selections', {
                 method: 'POST',
                 headers:{
                     'content-type': 'application/json'
