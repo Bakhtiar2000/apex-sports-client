@@ -24,7 +24,7 @@ const AddAClass = () => {
         }
         console.log(AddedClass)
 
-        axiosURL.post('addedClasses', AddedClass)
+        axiosURL.post('classes', AddedClass)
         .then(data=> {
             console.log(data.data)
             if(data.data.insertedId){

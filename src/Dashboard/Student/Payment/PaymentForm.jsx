@@ -1,5 +1,4 @@
 import React from 'react';
-import './PaymentForm.css'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useContext } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
@@ -8,10 +7,10 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Swal from 'sweetalert2';
 
-const PaymentForm = ({ price, class_name, instructor, image, id }) => {
-    const stripe= useStripe()
-    const elements= useElements()
-    const {user}= useContext(AuthContext)
+const PaymentForm = ({ price, class_name, instructor, image, id, update_student, update_seat }) => {
+    const stripe = useStripe()
+    const elements = useElements()
+    const { user } = useContext(AuthContext)
     const [axiosURL] = useAxios()
     const [cardError, setCardError] = useState('')
     const [clientSecret, setClientSecret] = useState('')
@@ -19,12 +18,12 @@ const PaymentForm = ({ price, class_name, instructor, image, id }) => {
 
     // console.log(user.email, user.displayName, price, class_name, instructor)
     useEffect(() => {
-        if(price>0){
+        if (price > 0) {
             axiosURL.post('create-payment-intent', { price })
-            .then(data => {
-                // console.log(data.data.clientSecret)
-                setClientSecret(data.data.clientSecret)
-            })
+                .then(data => {
+                    // console.log(data.data.clientSecret)
+                    setClientSecret(data.data.clientSecret)
+                })
         }
     }, [])
 
@@ -86,25 +85,32 @@ const PaymentForm = ({ price, class_name, instructor, image, id }) => {
             }
 
             axiosURL.post('payments', payment)
-            .then(res=> {
-                console.log(res.data)
-                if(res.data.insertedId){
-                    Swal.fire(
-                        'Congratulations!',
-                        'You have enrolled in this class',
-                        'success'
-                      )
-                }
-            })
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data.insertedId) {
+                        Swal.fire(
+                            'Congratulations!',
+                            'You have enrolled in this class',
+                            'success'
+                        )
+                    }
+                })
 
             axiosURL.delete(`selections/${id}`)
-            .then(data=> console.log(data.data.deletedCount))
+                .then(data => console.log(data.data))
 
-            axiosURL.patch(`/classes/${id}`)
-            .then(data=> console.log(data.data))
+            axiosURL.put(`/classes/${id}`)
+                .then(response => {
+                    console.log(response.data)
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         }
 
     }
+
+    console.log(update_seat, update_student)
 
     return (
         <div>
@@ -125,7 +131,7 @@ const PaymentForm = ({ price, class_name, instructor, image, id }) => {
                         },
                     }}
                 />
-                <button className="btn btn-outline btn-primary btn-sm mt-5" type="submit" disabled={!stripe || !clientSecret || processing }>
+                <button className="btn btn-outline btn-primary btn-sm mt-5" type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>

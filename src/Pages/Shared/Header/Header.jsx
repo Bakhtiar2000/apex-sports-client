@@ -4,6 +4,7 @@ import logo from '/assets/Logo/apex sports logo without bg.png'
 import { FaUserCircle } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import { useEffect } from 'react';
 const Header = ({ setMode }) => {
     const { user, logOut } = useContext(AuthContext)
     const location = useLocation()

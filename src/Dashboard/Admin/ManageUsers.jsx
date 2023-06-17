@@ -27,7 +27,7 @@ const ManageUsers = () => {
             confirmButtonText: `Yes, make ${newRole}!`
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://apex-sports-server.vercel.app/users/${id}`, {
+                fetch(`http://localhost:5000/users/${id}`, {
                     method: "PATCH",
                     headers: {
                         "content-type": "application/json"

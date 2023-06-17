@@ -28,14 +28,26 @@ const Banner = () => {
             console.error(countUpAnim.error);
         }
     }
+    const iframeRef = useRef(null);
+    const modalRef = useRef(null);
+
+    const handleCloseModal = () => {
+        // Pause the YouTube video
+        const iframe = iframeRef.current;
+        const player = new window.YT.Player(iframe);
+        player.pauseVideo();
+        modalRef.current.close();
+    };
+
 
     const AutoplaySlider = withAutoplay(AwesomeSlider);
     return (
         <div className='flex flex-col lg:flex-row gap-3 md:gap-5 px-2 sm:p-10 md:p-20 pt-20 sm:pt-24 md:pt-28'>
-            <dialog id="my_modal_1" className="modal">
+            <dialog ref={modalRef}  id="my_modal_1" className="modal">
                 <form method="dialog" className="modal-box">
                     <div className="modal-action">
                         <iframe
+                            ref={iframeRef}
                             className="responsive-iframe"
                             width="560"
                             height="315"
@@ -46,7 +58,7 @@ const Banner = () => {
                     </div>
                 </form>
                 <form method="dialog" className="modal-backdrop">
-                    <button>close</button>
+                    <button onClick={handleCloseModal}>close</button>
                 </form>
             </dialog>
             <div className='flex-1 my-auto'>

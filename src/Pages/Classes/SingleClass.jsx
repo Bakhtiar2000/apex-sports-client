@@ -6,7 +6,7 @@ import UserRoleRoute from '../../Routes/UserRoleRoute';
 import useSelection from '../../Hooks/useSelection';
 
 const SingleClass = ({ usedClass }) => {
-    const { _id, name, price, instructor, available_seats, image } = usedClass
+    const { _id, name, price, instructor, available_seats, no_of_students, image } = usedClass
     const [disabled, setDisabled]= useState(false)
     const {user}= useContext(AuthContext)
     const navigate= useNavigate()
@@ -22,8 +22,8 @@ const SingleClass = ({ usedClass }) => {
     const handleSelectClass = () => {
         
         if(user && user?.email){
-            const selected= {classId: _id, name, instructor, image, email: user.email, price}
-            fetch('https://apex-sports-server.vercel.app/selections', {
+            const selected= {classId: _id, name, instructor, image, email: user.email, price, available_seats, no_of_students}
+            fetch('http://localhost:5000/selections', {
                 method: 'POST',
                 headers:{
                     'content-type': 'application/json'
