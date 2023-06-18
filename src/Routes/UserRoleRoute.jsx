@@ -9,13 +9,13 @@ const UserRoleRoute = () => {
     useEffect(() => {
         const fetchUser = async () => {
             if (user?.email) {
-              const response = await axiosURL.get(`/users/${user.email}`);
+              const response = await axiosURL.get(`users/${user.email}`);
               setCurrentUser(response.data);
             }
           };
       
           fetchUser();
-    }, [])
+    }, [user?.email])
     
     console.log(currentUser)
     return [currentUser]

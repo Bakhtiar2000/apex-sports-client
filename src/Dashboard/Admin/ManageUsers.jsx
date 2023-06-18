@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import useAxios from '../../Hooks/useAxios';
 import UserRow from './UserRow';
-import useSelection from '../../Hooks/useSelection';
 import Swal from 'sweetalert2';
+import useUsers from '../../Hooks/useUsers';
+import useAllUsers from '../../Hooks/useAllUsers';
 
 const ManageUsers = () => {
-    const [users, setUsers] = useState([])
-    const [, refetch] = useSelection()
+    // const [users, setUsers] = useState([])
+    const [users=[], refetch] = useAllUsers()
     const [axiosURL] = useAxios()
 
-
-    useEffect(() => {
-        axiosURL.get('users')
-            .then(data => setUsers(data.data))
-    }, [])
+    // useEffect(() => {
+    //     axiosURL.get('users')
+    //         .then(data => setUsers(data.data))
+    // }, [])
 
     const updateUserRole = (id, newRole) => {
         console.log(id, newRole)
@@ -27,7 +27,7 @@ const ManageUsers = () => {
             confirmButtonText: `Yes, make ${newRole}!`
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/${id}`, {
+                fetch(`https://apex-sports-server.vercel.app/users/${id}`, {
                     method: "PATCH",
                     headers: {
                         "content-type": "application/json"
@@ -38,10 +38,6 @@ const ManageUsers = () => {
                     .then(data => {
                         console.log(data)
                         if (data.modifiedCount > 0) {
-                            const updatedUsers = users.map((user) =>
-                                user._id === id ? { ...user, role: newRole } : user
-                            );
-                            setUsers(updatedUsers);
                             refetch()
                             Swal.fire(
                                 'Updated!',

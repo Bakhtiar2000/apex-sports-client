@@ -20,7 +20,7 @@ const AddAClass = () => {
             price: data.price,
             no_of_students: 0,
             status: 'pending',
-            available_seats: data.seats
+            available_seats: parseFloat(data.seats)
         }
         console.log(AddedClass)
 

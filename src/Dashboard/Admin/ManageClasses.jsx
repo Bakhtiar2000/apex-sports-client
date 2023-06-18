@@ -37,7 +37,7 @@ const ManageClasses = () => {
             confirmButtonText: `Yes, update status to ${newStatus}!`
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/classes/${id}`, {
+                fetch(`https://apex-sports-server.vercel.app/classes/${id}`, {
                     method: "PATCH",
                     headers: {
                         "content-type": "application/json"
@@ -65,7 +65,7 @@ const ManageClasses = () => {
 
 
     const handleFeedback = id => {
-            fetch(`http://localhost:5000/classes/${id}`, {
+            fetch(`https://apex-sports-server.vercel.app/classes/${id}`, {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json"

@@ -38,7 +38,7 @@ const Register = () => {
                     .then(() => {
                         const savedUser = { name: data.name, email: data.email, role: 'student' }
                         console.log(savedUser)
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://apex-sports-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

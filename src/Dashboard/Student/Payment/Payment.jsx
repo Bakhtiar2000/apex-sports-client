@@ -15,7 +15,7 @@ const Payment = () => {
     const payingInstructor= payingClass? payingClass.instructor : 'instructor not found'
     const payingClassName= payingClass? payingClass.name : 'class not found'
     const payingClassImage= payingClass? payingClass.image : 'image not found'
-    const payingId= payingClass? payingClass._id : 'id not found'
+    const payingId= payingClass? payingClass.classId : 'id not found'
     const payingClassAvailableSeats= payingClass? payingClass.available_seats : 'seat not found'
     const payingClassStudents= payingClass? payingClass.no_of_students : 'student not found'
 
