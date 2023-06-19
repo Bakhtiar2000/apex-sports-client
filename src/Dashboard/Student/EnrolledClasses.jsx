@@ -21,7 +21,7 @@ const EnrolledClasses = () => {
                 <table className="table text-center">
 
                     <thead>
-                        <tr>
+                        <tr className='text-slate-500'>
                             <th>#</th>
                             <th></th>
                             <th>Class name</th>
@@ -36,7 +36,7 @@ const EnrolledClasses = () => {
                                     <div className="flex items-center space-x-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src={enrolledClass?.image} alt="Avatar Tailwind CSS Component" />
+                                                <img src={enrolledClass?.image} alt="class" />
                                             </div>
                                         </div>
                                     </div>

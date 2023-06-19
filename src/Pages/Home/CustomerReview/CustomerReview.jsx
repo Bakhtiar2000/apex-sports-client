@@ -56,21 +56,21 @@ const CustomerReview = () => {
 
     return (
         <div className="customer-review-section">
-            <h2 className='text-5xl text-center text-violet-800 my-8 font-serif'>What they say about us</h2>
+            <h2 className='text-3xl md:text-5xl text-center text-violet-800 my-8 font-serif'>What they say about us</h2>
 
             <div className="flex justify-center items-stretch gap-3 md:gap-8 mb-10 max-w-4xl mx-auto">
 
 
                 <div className="bg-violet-100 rounded-lg py-8 px-5 w-full">
                     <div className="review-content">
-                        <p className='mb-3 italic text-slate-950'>{currentReview.comment}</p>
+                        <p className='mb-3 italic text-slate-950 text-sm md:text-md'>{currentReview.comment}</p>
                         <Rating style={{ maxWidth: 100 }} value={Math.round(currentReview.rating || 0)} readOnly />
                         <div className='flex gap-5 items-center mt-5'>
                             <div className="review-image">
                                 <img className='w-12 rounded-full' src={currentReview.image} alt={currentReview.name} />
                             </div>
                             <div>
-                                <h3 className='font-semibold text-xl text-slate-950'>{currentReview.name}</h3>
+                                <h3 className='font-semibold text-md md:text-xl text-slate-950'>{currentReview.name}</h3>
                                 <p className='text-sm text-slate-400'>{currentReview.job}</p>
                             </div>
                         </div>
@@ -80,14 +80,14 @@ const CustomerReview = () => {
 
                 <div className="bg-violet-100 rounded-lg py-8 px-5 w-full">
                     <div className="review-content">
-                        <p className='mb-3 italic text-slate-950'>{nextReview.comment}</p>
+                        <p className='mb-3 italic text-slate-950 text-sm md:text-md'>{nextReview.comment}</p>
                         <Rating style={{ maxWidth: 100 }} value={Math.round(nextReview.rating || 0)} readOnly />
                         <div className='flex gap-5 items-center mt-5'>
                             <div className="review-image">
                                 <img className='w-12 rounded-full' src={nextReview.image} alt={nextReview.name} />
                             </div>
                             <div>
-                                <h3 className='font-semibold text-xl text-slate-950'>{nextReview.name}</h3>
+                                <h3 className='font-semibold text-md md:text-xl text-slate-950'>{nextReview.name}</h3>
                                 <p className='text-sm text-slate-400'>{nextReview.job}</p>
                             </div>
                         </div>

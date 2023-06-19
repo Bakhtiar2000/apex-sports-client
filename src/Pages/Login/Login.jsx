@@ -26,6 +26,7 @@ const Login = () => {
             .then(res => {
                 const loggedUser = res.user
                 console.log(loggedUser)
+                
                 Swal.fire({
                     title: 'Account login successful',
                     showClass: {
@@ -50,6 +51,8 @@ const Login = () => {
             .then(res => {
                 const loggedUser = res.user
                 console.log(loggedUser)
+                const savedUser = { name: loggedUser?.displayName, email: loggedUser?.email, image: loggedUser?.photoURL, phone: loggedUser?.phoneNumber, gender: loggedUser?.gender, address: loggedUser?.address, role: 'student' }
+                console.log(savedUser)
                 Swal.fire({
                     title: 'Account login successful',
                     showClass: {
@@ -65,11 +68,11 @@ const Login = () => {
     }
 
     return (
-        <div className="hero min-h-screen login-page-cover-photo">
+        <div className="hero min-h-screen login-page-cover-photo px-2 py-3">
 
-            <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-violet-100">
+            <div className="card flex-shrink-0 w-full max-w-md  shadow-2xl bg-violet-100 text-slate-900">
                 <div className="card-body">
-                    <h1 className="text-3xl text-center font-semibold mb-5">Login to your account</h1>
+                    <h1 className="text-2xl md:text-3xl text-center font-semibold mb-5">Login to your account</h1>
 
                     <button onClick={handleLogInWithGoogle} className="btn bg-white w-60 mx-auto">
                         <span className='mr-2 text-xl'><FcGoogle /> </span> Continue with google
@@ -95,7 +98,7 @@ const Login = () => {
 
                             <label className="label">
                                 <span className="label-text">Your Password*</span>
-                                <span className="underline label-text-alt text-primary">Forgot password?</span>
+                                <span className="btn btn-link btn-xs lowercase">Forgot password?</span>
                             </label>
                             <input className='relative input input-bordered' type={show ? 'text' : 'password'} {...register("password", { required: true })} />
                             <FaEye onClick={handlePasswordToggle} className='absolute bottom-[200px] right-12 text-slate-500 hover:text-slate-700' />

@@ -17,7 +17,7 @@ const PopularInstructor = () => {
 
     return (
         <div>
-            <h2 className='text-5xl text-center text-violet-800 mt-8 font-serif'>Popular Instructors</h2>
+            <h2 className='text-3xl md:text-5xl  text-center text-violet-800 mt-8 font-serif'>Popular Instructors</h2>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 my-10'>
                 {instructors.map(instructor => <PopularInstructorBox
                     key={instructor._id}

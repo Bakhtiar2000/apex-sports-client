@@ -36,7 +36,7 @@ const Register = () => {
 
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        const savedUser = { name: data.name, email: data.email, role: 'student' }
+                        const savedUser = { name: data.name, email: data.email, image: data.photo, phone: data.phone, gender: data.gender, address: data.address,  role: 'student' }
                         console.log(savedUser)
                         fetch('https://apex-sports-server.vercel.app/users', {
                             method: 'POST',
@@ -97,11 +97,11 @@ const Register = () => {
         }
 
     return (
-        <div className="hero min-h-screen login-page-cover-photo">
+        <div className="hero min-h-screen login-page-cover-photo px-2 py-3">
 
-            <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl bg-violet-100">
+            <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl bg-violet-100 text-slate-900">
                 <div className="card-body">
-                    <h1 className="text-3xl text-center font-semibold mb-5">Create account in <span className='changing-text'>Apex sports</span></h1>
+                    <h1 className="text-2xl md:text-3xl  text-center font-semibold mb-5">Create account in <span className='changing-text'>Apex sports</span></h1>
                     <button onClick={handleLogInWithGoogle} className="btn bg-white w-60 mx-auto">
                         <span className='mr-2 text-xl'><FcGoogle /> </span> Continue with google
                     </button>
@@ -127,7 +127,7 @@ const Register = () => {
                         </div>
 
 
-                        <div className='flex gap-5'>
+                        <div className='flex flex-col md:flex-row gap-5'>
 
                             {/* Gender */}
                             <div className="form-control w-full">

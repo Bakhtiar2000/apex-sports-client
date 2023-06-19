@@ -3,9 +3,9 @@ import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import 'react-awesome-slider/dist/styles.css';
-import cricketer from '../../../../public/assets/Banner images/cricketer.jpg'
-import tennis_player from '../../../../public/assets/Banner images/tennis player.jpg'
-import footballer from '../../../../public/assets/Banner images/footballer.png'
+import cricketer from '/assets/Banner images/cricketer.jpg'
+import tennis_player from '/assets/Banner images/tennis player.jpg'
+import footballer from '/assets/Banner images/footballer.png'
 import { RxResume } from 'react-icons/rx';
 import './Banner.css'
 import CountUp from 'react-countup';
@@ -104,7 +104,7 @@ const Banner = () => {
                 <div className='flex items-center gap-5 mx-auto'>
                     <div>
                         <Link to='/classes'>
-                            <button className='get-started-btn'>
+                            <button id='get-started' className='get-started-btn'>
                                 Get started
                             </button>
                         </Link>

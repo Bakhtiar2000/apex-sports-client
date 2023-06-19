@@ -59,7 +59,7 @@ const ManageUsers = () => {
                 <table className="table text-center">
 
                     <thead>
-                        <tr>
+                        <tr className='text-slate-500'>
                             <th>#</th>
                             <th></th>
                             <th>User Name</th>

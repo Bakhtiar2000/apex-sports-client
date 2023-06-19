@@ -14,7 +14,7 @@ const PopularClass = () => {
     console.log(classes)
     return (
         <div>
-            <h2 className='text-5xl text-center text-violet-800 mt-8 font-serif'>Popular Classes</h2>
+            <h2 className='text-3xl md:text-5xl text-center text-violet-800 mt-8 font-serif'>Popular Classes</h2>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 my-10'>
                 {

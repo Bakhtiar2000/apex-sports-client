@@ -91,7 +91,7 @@ const MyClasses = () => {
                 <table className="table text-center">
 
                     <thead>
-                        <tr>
+                        <tr className='text-slate-500'>
                             <th>#</th>
                             <th>Class name</th>
                             <th>Enrolled Students</th>

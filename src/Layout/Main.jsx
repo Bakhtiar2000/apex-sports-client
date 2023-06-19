@@ -3,7 +3,6 @@ import Header from '../Pages/Shared/Header/Header';
 import { Outlet } from 'react-router-dom';
 import Footer from '../Pages/Shared/Footer/Footer';
 
-
 const Main = () => {
     const [mode, setMode] = useState('day');
 
@@ -16,6 +15,7 @@ const Main = () => {
         backgroundColor: 'black',
         color: 'white',
     };
+
 
     return (
         <div style={mode === 'day' ? dayStyles : nightStyles}>
