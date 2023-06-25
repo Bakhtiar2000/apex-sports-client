@@ -11,43 +11,17 @@ import './Banner.css'
 import CountUp from 'react-countup';
 import { Link } from 'react-router-dom';
 
-const Banner = () => {
-    const countupRef = useRef(null);
-    let countUpAnim;
 
-    useEffect(() => {
-        initCountUp();
-    }, []);
-
-    async function initCountUp() {
-        const countUpModule = await import('countup.js');
-        countUpAnim = new countUpModule.CountUp(countupRef.current, 1000);
-        if (!countUpAnim.error) {
-            countUpAnim.start();
-        } else {
-            console.error(countUpAnim.error);
-        }
-    }
-    const iframeRef = useRef(null);
-    const modalRef = useRef(null);
-
-    const handleCloseModal = () => {
-        // Pause the YouTube video
-        const iframe = iframeRef.current;
-        const player = new window.YT.Player(iframe);
-        player.pauseVideo();
-        modalRef.current.close();
-    };
-
+const Banner = ({ startTour }) => {
+    const countUpRef = useRef(null);
 
     const AutoplaySlider = withAutoplay(AwesomeSlider);
     return (
         <div className='flex flex-col lg:flex-row gap-3 md:gap-5 px-2 sm:p-10 md:p-20 pt-20 sm:pt-24 md:pt-28'>
-            <dialog ref={modalRef}  id="my_modal_1" className="modal">
+            <dialog  id="my_modal_1" className="modal">
                 <form method="dialog" className="modal-box">
                     <div className="modal-action">
                         <iframe
-                            ref={iframeRef}
                             className="responsive-iframe"
                             width="560"
                             height="315"
@@ -58,7 +32,7 @@ const Banner = () => {
                     </div>
                 </form>
                 <form method="dialog" className="modal-backdrop">
-                    <button onClick={handleCloseModal}>close</button>
+                    <button>close</button>
                 </form>
             </dialog>
             <div className='flex-1 my-auto'>
@@ -67,33 +41,33 @@ const Banner = () => {
 
                 <div className='flex items-center gap-8 text-left mb-8 mt-5'>
                     <div>
-                        <CountUp start={0} end={20}>
-                            {({ countUpRef, start }) => (
+                        <CountUp start={0} end={20} delay={0}>
+                            {({ countUpRef }) => (
                                 <div>
                                     <span className='text-2xl' ref={countUpRef} />
-                                    <button onClick={start}><span className='text-red-500 text-2xl'>+</span></button>
+                                    <span className='text-red-500 text-2xl'>+</span>
                                 </div>
                             )}
                         </CountUp>
                         <p className='text-slate-400 text-xs'>YEARS OF EXPERIENCE</p>
                     </div>
                     <div>
-                        <CountUp start={0} end={60}>
-                            {({ countUpRef, start }) => (
+                        <CountUp start={0} end={60} delay={0}>
+                            {({ countUpRef }) => (
                                 <div>
                                     <span className='text-2xl' ref={countUpRef} />
-                                    <button onClick={start}><span className='text-red-500 text-2xl'>+</span></button>
+                                    <span className='text-red-500 text-2xl'>+</span>
                                 </div>
                             )}
                         </CountUp>
                         <p className='text-slate-400 text-xs'>EXPERT COACHES</p>
                     </div>
                     <div>
-                        <CountUp start={0} end={140}>
-                            {({ countUpRef, start }) => (
+                        <CountUp start={0} end={140} delay={0}>
+                            {({ countUpRef }) => (
                                 <div>
                                     <span className='text-2xl' ref={countUpRef} />
-                                    <button onClick={start}><span className='text-red-500 text-2xl'>+</span></button>
+                                    <span className='text-red-500 text-2xl'>+</span>
                                 </div>
                             )}
                         </CountUp>
@@ -103,15 +77,13 @@ const Banner = () => {
 
                 <div className='flex items-center gap-5 mx-auto'>
                     <div>
-                        <Link to='/classes'>
-                            <button id='get-started' className='get-started-btn'>
-                                Get started
-                            </button>
-                        </Link>
+                        <button onClick={startTour} className='get-started-btn '>
+                            Get started
+                        </button>
                     </div>
                     <div className='ml-5 flex items-center
                      gap-2'>
-                        <div className='rounded-full border-2 border-violet-900 hover:bg-violet-900 p-3' onClick={() => window.my_modal_1.showModal()}>
+                        <div className='rounded-full border-2 border-violet-900 hover:bg-violet-900 p-3 banner-video' onClick={() => window.my_modal_1.showModal()}>
                             <RxResume className='text-violet-700 hover:text-violet-400' />
                         </div>
                         <p style={{ fontFamily: 'EBGaramond, serif' }} className='text-xl '>Watch Video</p>
@@ -121,6 +93,7 @@ const Banner = () => {
 
             <div className='flex-1'>
                 <AutoplaySlider animation="cubeAnimation" play={true}
+                    autoplay={true}
                     cancelOnInteraction={false}
                     interval={5000}>
                     <div data-src={cricketer} />

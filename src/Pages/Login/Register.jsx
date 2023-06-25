@@ -36,7 +36,7 @@ const Register = () => {
 
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        const savedUser = { name: data.name, email: data.email, image: data.photo, phone: data.phone, gender: data.gender, address: data.address,  role: 'student' }
+                        const savedUser = { name: data.name, email: data.email, image: data.photo, phone: data.phone, gender: data.gender, address: data.address, role: 'student' }
                         console.log(savedUser)
                         fetch('https://apex-sports-server.vercel.app/users', {
                             method: 'POST',
@@ -65,12 +65,6 @@ const Register = () => {
 
                     })
                     .catch(err => console.log(err.message))
-
-                // logOut()
-                //     .then(() => {
-                //         navigate('/login')
-                //     })
-                //     .catch(err => console.log(err.message))
             })
 
             .catch(err => console.log(err))
@@ -82,19 +76,32 @@ const Register = () => {
             .then(res => {
                 const loggedUser = res.user
                 console.log(loggedUser)
-                navigate('/')
-                Swal.fire({
-                    title: 'Account created successfully',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
+                const savedUser = { name: loggedUser?.displayName, email: loggedUser?.email, image: loggedUser?.photoURL, phone: loggedUser?.phoneNumber, gender: loggedUser?.gender, address: loggedUser?.address, role: 'student' }
+                console.log(savedUser)
+                fetch('https://apex-sports-server.vercel.app/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
                     },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
+                    body: JSON.stringify(savedUser)
                 })
+                    .then(res => res.json())
+                    .then(data => {
+                        navigate('/')
+                        console.log(data.insertedId)
+                        Swal.fire({
+                            title: 'Account created successfully',
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                        })
+                    })
             })
             .catch(err => setError(err.message))
-        }
+    }
 
     return (
         <div className="hero min-h-screen login-page-cover-photo px-2 py-3">

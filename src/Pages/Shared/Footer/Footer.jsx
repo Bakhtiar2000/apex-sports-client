@@ -14,7 +14,7 @@ const Footer = () => {
 
                     <div>
                         <h2 style={{ fontFamily: 'EB Garamond, serif' }} className='text-2xl mb-2 mt-5'>Subscribe to our newsletter</h2>
-                        <div className='flex gap-0'>
+                        <div className='flex gap-0 subscribe'>
                             <input className='w-48 md:w-60 pl-5' type="email" placeholder='Your Email' />
                             <button className='get-started-btn'>Subscribe</button>
                         </div>

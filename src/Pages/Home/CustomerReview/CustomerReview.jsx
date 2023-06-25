@@ -56,7 +56,7 @@ const CustomerReview = () => {
 
     return (
         <div className="customer-review-section">
-            <h2 className='text-3xl md:text-5xl text-center text-violet-800 my-8 font-serif'>What they say about us</h2>
+            <h2 className='text-3xl md:text-5xl text-center text-violet-800 my-8 font-serif  w-fit mx-auto customer-review-heading'>What they say about us</h2>
 
             <div className="flex justify-center items-stretch gap-3 md:gap-8 mb-10 max-w-4xl mx-auto">
 

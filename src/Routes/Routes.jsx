@@ -21,6 +21,8 @@ import EnrolledClasses from "../Dashboard/Student/EnrolledClasses";
 import Payment from "../Dashboard/Student/Payment/Payment";
 import UserRoleRoute from "./UserRoleRoute";
 import PaymentHistory from "../Dashboard/Student/PaymentHistory";
+import Profile from "../Pages/Profile/Profile";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -47,12 +49,16 @@ const router = createBrowserRouter([
       {
         path: '/instructors',
         element: <Instructors></Instructors>
+      },
+      {
+        path: '/profile',
+        element: <Profile></Profile>
       }
     ]
   },
   {
     path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     errorElement: <ErrorPage></ErrorPage>,
     children:[
 

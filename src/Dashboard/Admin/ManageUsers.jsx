@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import useAxios from '../../Hooks/useAxios';
 import UserRow from './UserRow';
 import Swal from 'sweetalert2';
-import useUsers from '../../Hooks/useUsers';
 import useAllUsers from '../../Hooks/useAllUsers';
 
 const ManageUsers = () => {

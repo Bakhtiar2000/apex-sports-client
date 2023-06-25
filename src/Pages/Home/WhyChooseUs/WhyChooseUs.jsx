@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const WhyChooseUs = () => {
     return (
         <div className='mb-20 mt-10'>
-            <h2 className='text-3xl md:text-5xl text-center text-violet-800 my-8 font-serif'>Why Choose Us</h2>
+            <h2 className='text-3xl md:text-5xl text-center text-violet-800 my-8 font-serif w-fit mx-auto why-choose-us-heading'>Why Choose Us</h2>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8'>
                 <motion.button

@@ -40,7 +40,6 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setLoading(false)
             setUser(currentUser)
-            console.log('Current user is:', currentUser)
         });
 
         return () => {
@@ -58,6 +57,8 @@ const AuthProvider = ({ children }) => {
         passwordReset,
         logOut
     }
+
+    console.log('Current user is:',user);
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

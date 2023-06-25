@@ -65,7 +65,7 @@ const Header = ({ setMode }) => {
                             <>
                                 <div className="flex justify-center items-center gap-2 md:gap-4">
                                     <Link className="tooltip" data-tip="dashboard" to='/dashboard'><FaUserCircle className='text-violet-700 md:text-2xl'/></Link>
-                                    <img src={user?.photoURL} className='rounded-full w-6 md:w-10 pr-0' />
+                                    <Link className='w-6 md:w-10' to='/profile'><img src={user?.photoURL} className='rounded-full w-6 md:w-10' /></Link>
                                 </div>
                                 <button className="ml-3 btn bg-violet-500 hover:bg-violet-700 border-0 text-white" onClick={handleLogOut}>Log out</button>
                             </> :

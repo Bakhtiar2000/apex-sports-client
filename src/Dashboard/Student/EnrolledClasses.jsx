@@ -7,6 +7,7 @@ const EnrolledClasses = () => {
     const {user}= useContext(AuthContext)
     const [axiosURL]= useAxios()
     const [enrolledClasses, setEnrolledClasses] = useState([])
+    console.log(user)
 
     useEffect(() => {
         axiosURL.get(`payments?email=${user?.email}`)

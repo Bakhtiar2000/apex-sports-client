@@ -53,15 +53,26 @@ const Login = () => {
                 console.log(loggedUser)
                 const savedUser = { name: loggedUser?.displayName, email: loggedUser?.email, image: loggedUser?.photoURL, phone: loggedUser?.phoneNumber, gender: loggedUser?.gender, address: loggedUser?.address, role: 'student' }
                 console.log(savedUser)
-                Swal.fire({
-                    title: 'Account login successful',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
+                fetch('https://apex-sports-server.vercel.app/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
                     },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
+                    body: JSON.stringify(savedUser)
                 })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data.insertedId)
+                        Swal.fire({
+                            title: 'Account created successfully',
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                        })
+                    })
                 navigate(from, { replace: true })
             })
             .catch(err => setError(err.message))
