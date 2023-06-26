@@ -19,7 +19,7 @@ const Main = () => {
 
     return (
         <div style={mode === 'day' ? dayStyles : nightStyles}>
-            <Header setMode={setMode}></Header>
+            <Header setMode={setMode} mode={mode}></Header>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>

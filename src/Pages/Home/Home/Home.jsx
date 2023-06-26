@@ -9,7 +9,6 @@ import Tour from 'reactour'
 
 const Home = () => {
     const [isTourOpen, setIsTourOpen] = useState(false);
-    const [currentStep, setCurrentStep] = useState(0);
 
     const closeTour = () => {
         setIsTourOpen(false);

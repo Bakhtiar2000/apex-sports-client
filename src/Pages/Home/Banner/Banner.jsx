@@ -9,7 +9,6 @@ import footballer from '/assets/Banner images/footballer.png'
 import { RxResume } from 'react-icons/rx';
 import './Banner.css'
 import CountUp from 'react-countup';
-import { Link } from 'react-router-dom';
 
 
 const Banner = ({ startTour }) => {
